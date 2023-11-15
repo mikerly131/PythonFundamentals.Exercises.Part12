@@ -49,5 +49,5 @@ def gen_set(val_in: str) -> Set:
     :param val_in:
     :return:
     """
-    # Need to make the word a set and then remove any duplicates (uppers)
-    return (letter.upper() for letter in set(val_in) if letter.islower())
+    # Need to make the word a set and then remove any capital letters producing duplicates, then make remaining upper)
+    return {letter.upper() for letter in set(val_in) if letter.islower()}
