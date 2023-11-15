@@ -18,7 +18,8 @@ def gen_list(start: int, stop: int, parity: Parity) -> List[int]:
     :param parity:
     :return:
     """
-    pass
+    # fomrat: [ <expression> for <member to iterate over> in <iterable>
+    return [ i for i in range(start, stop) if i % 2 != parity.value]
 
 
 def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
@@ -27,13 +28,16 @@ def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
     what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
     updating this here docstring to something useful.
 
-
     :param start:
     :param stop:
     :param strategy:
     :return:
     """
-    pass
+
+    # create a dictionary comprehension
+    # each item  will be {[i]:strategy[i]} for i in range start, stop
+    return {x:strategy(x) for x in range(start, stop)}
+
 
 
 def gen_set(val_in: str) -> Set:
@@ -45,4 +49,5 @@ def gen_set(val_in: str) -> Set:
     :param val_in:
     :return:
     """
-    pass
+    # Need to make the word a set and then remove any duplicates (uppers)
+    return (letter.upper() for letter in set(val_in) if letter.islower())
